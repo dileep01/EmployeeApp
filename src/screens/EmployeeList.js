@@ -12,24 +12,35 @@ export default class EmployeeList extends Component {
     this.props.getEmployeeList();
   }
   renderListItem = item => {
-    return <ListItem age={item} />;
+    return (
+      <ListItem
+        age={item.age}
+        name={item.name}
+        gender={item.gender}
+        email={item.email}
+        phoneNo={item.phoneNo}
+      />
+    );
   };
   render() {
+    const { employeeList } = this.props;
     return (
       <View style={styles.container}>
-        <FlatList
-          contentContainerStyle={styles.list}
-          data={["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]}
-          keyExtractor={(item, index) => index}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => this.renderListItem(item)}
-        />
+        {employeeList && (
+          <FlatList
+            contentContainerStyle={styles.list}
+            data={employeeList.user}
+            keyExtractor={(item, index) => item.id}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => this.renderListItem(item)}
+          />
+        )}
       </View>
     );
   }
 }
 EmployeeList.propTypes = {
-  employeeList: PropTypes.array,
+  employeeList: PropTypes.object,
   getEmployeeList: PropTypes.func
 };
 EmployeeList.defaultProps = {};
