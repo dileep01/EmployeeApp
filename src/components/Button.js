@@ -7,10 +7,7 @@ export default class Button extends Component {
     this.props.onPress && this.props.onPress();
   };
   renderContent = () => {
-    const { labelStyle, label, renderRow } = this.props;
-    if (renderRow) {
-      return renderRow;
-    }
+    const { labelStyle, label } = this.props;
     return <Text style={labelStyle || styles.label}>{label}</Text>;
   };
   render() {
@@ -61,7 +58,6 @@ Button.propTypes = {
   labelStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
   buttonStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
   buttonColor: PropTypes.string,
-  renderRow: PropTypes.node,
   loaderColor: PropTypes.string,
   disableColor: PropTypes.string,
   loaderSize: PropTypes.string,

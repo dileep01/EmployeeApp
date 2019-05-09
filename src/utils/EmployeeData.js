@@ -1,4 +1,4 @@
-const employeeData = {
+export const employeeList = {
   user: [
     {
       id: 1,

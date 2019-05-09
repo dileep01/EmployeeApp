@@ -4,10 +4,6 @@ import styles from "../styles/EmployeeListStyles";
 import PropTypes from "prop-types";
 import ListItem from "../components/ListItem";
 export default class EmployeeList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
   componentDidMount() {
     this.props.getEmployeeList();
   }
