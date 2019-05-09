@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import LoginScreen from "../screens/LoginScreen";
 import { getUserDetails } from "../actions/userDetails.actions";
 
-const mapStateToProps = state => {);
+const mapStateToProps = state => {
   return {
     loading: state.user.loading,
     error: state.user.error,

@@ -11,6 +11,10 @@ export default class LoginScreen extends Component {
     super(props);
     this.state = { emailId: "", password: "" };
   }
+  static navigationOptions = {
+    header: null
+  };
+
   componentDidMount() {
     this.props.getUserDetails();
   }
@@ -39,20 +43,20 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ width: "75%", margin: 20 }}>
+        <View style={styles.emailHolder}>
           <Input
             onChangeText={val => this.setState({ emailId: val })}
             placeholder={"Please enter emailId"}
           />
         </View>
 
-        <View style={{ width: "75%", margin: 20 }}>
+        <View style={styles.passwordHolder}>
           <Input
             onChangeText={val => this.setState({ password: val })}
             placeholder={"Please enter password"}
           />
         </View>
-        <Button onPress={this.goToNext} />
+        <Button onPress={this.goToNext} label={"LOGIN"} />
       </View>
     );
   }
@@ -61,4 +65,3 @@ LoginScreen.propTypes = {
   userDetails: PropTypes.object,
   getUserDetails: PropTypes.func
 };
-LoginScreen.defaultProps = {};
