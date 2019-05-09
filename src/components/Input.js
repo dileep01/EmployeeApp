@@ -19,7 +19,7 @@ class Input extends PureComponent {
     this.setState({ value: val });
   }
   clearInput = () => {
-    this.textInput.clear();
+    this.inputRef.current.clear();
   };
   focusInput = () => {
     this.inputRef.current.focus();

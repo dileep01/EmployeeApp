@@ -5,7 +5,13 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import PropTypes from "prop-types";
 import { isValidPassword, isValidEmail } from "../utils/Validation";
-
+import { DOESNT_EXIST, NOT_VALID_EMAIL } from "../utils/constants";
+import Toast from "react-native-simple-toast";
+import { StackActions, NavigationActions } from "react-navigation";
+const resetAction = StackActions.reset({
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: "EmployeeListContainer" })]
+});
 export default class LoginScreen extends Component {
   constructor(props) {
     super(props);
@@ -18,17 +24,19 @@ export default class LoginScreen extends Component {
   componentDidMount() {
     this.props.getUserDetails();
   }
-  goToNext = () => {
+  _navigateToEmployeeList = () => {
     const { emailId, password } = this.state;
     if (!isValidEmail(emailId)) {
+      Toast.show(NOT_VALID_EMAIL);
       return;
     } else if (!isValidPassword(password)) {
+      Toast.show(NOT_VALID_PASSWORD);
       return;
     } else {
-      this.validateUser();
+      this._validateUser();
     }
   };
-  validateUser = () => {
+  _validateUser = () => {
     const { userDetails } = this.props;
     const { emailId, password } = this.state;
     if (userDetails) {
@@ -36,7 +44,9 @@ export default class LoginScreen extends Component {
         emailId === userDetails.username &&
         password === userDetails.password
       ) {
-        this.props.navigation.navigate("EmployeeListContainer", {});
+        this.props.navigation.dispatch(resetAction);
+      } else {
+        Toast.show(DOESNT_EXIST);
       }
     }
   };
@@ -56,7 +66,7 @@ export default class LoginScreen extends Component {
             placeholder={"Please enter password"}
           />
         </View>
-        <Button onPress={this.goToNext} label={"LOGIN"} />
+        <Button onPress={this._navigateToEmployeeList} label={"LOGIN"} />
       </View>
     );
   }
