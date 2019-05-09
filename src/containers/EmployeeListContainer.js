@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import EmployeeList from "../screens/EmployeeList";
-import { getEmployeeList } from "../actions/employee.actions";
+import { getEmployeeListSuccess } from "../actions/employee.actions";
 
 const mapStateToProps = state => {
   return {
@@ -14,12 +14,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getEmployeeList: () => {
-      dispatch(getEmployeeList());
+      dispatch(getEmployeeListSuccess());
     }
   };
 };
-const HomeScreenContainer = connect(
+const EmployeeListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(EmployeeList);
-export default HomeScreenContainer;
+export default EmployeeListContainer;

@@ -1,16 +1,26 @@
 import React, { Component } from "react";
-import { View } from "react-native";
 import { createAppContainer, createStackNavigator } from "react-navigation";
-import EmployeeList from "./src/screens/EmployeeList";
+import EmployeeListContainer from "./src/containers/EmployeeListContainer";
 import LoginScreen from "./src/screens/LoginScreen";
-//import Form from "./src/screens/Form";
+import configureStore from "./configStore";
+import { Provider } from "react-redux";
 const AppStack = createStackNavigator({
   LoginScreen: { screen: LoginScreen },
-  EmployeeList: { screen: EmployeeList }
+  EmployeeListContainer: { screen: EmployeeListContainer }
 });
 const AppContainer = createAppContainer(AppStack);
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      store: configureStore(() => this.setState({ isLoading: false }))
+    };
+  }
   render() {
-    return <AppContainer />;
+    return (
+      <Provider store={this.state.store}>
+        <AppContainer />
+      </Provider>
+    );
   }
 }

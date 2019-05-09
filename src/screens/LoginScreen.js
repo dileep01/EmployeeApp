@@ -12,7 +12,7 @@ export default class LoginScreen extends Component {
     this.state = { emailId: "", mobileNumber: "" };
   }
   goToNext = () => {
-    this.props.navigation.navigate("EmployeeList", {});
+    this.props.navigation.navigate("EmployeeListContainer", {});
     console.log(isValidEmail(this.state.emailId));
     // if (isValidEmail(this.state.emailId)) {
     //   return;

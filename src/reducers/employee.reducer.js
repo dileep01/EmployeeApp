@@ -1,6 +1,6 @@
 import * as employeeListAction from "../actions/employee.actions";
 
-const categories = (
+const employees = (
   state = {
     loading: false,
     employeeList: null,

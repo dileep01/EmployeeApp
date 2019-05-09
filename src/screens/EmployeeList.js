@@ -8,6 +8,9 @@ export default class EmployeeList extends Component {
     super(props);
     this.state = {};
   }
+  componentDidMount() {
+    this.props.getEmployeeList();
+  }
   renderListItem = item => {
     return <ListItem age={item} />;
   };
@@ -25,5 +28,8 @@ export default class EmployeeList extends Component {
     );
   }
 }
-EmployeeList.propTypes = {};
+EmployeeList.propTypes = {
+  employeeList: PropTypes.array,
+  getEmployeeList: PropTypes.func
+};
 EmployeeList.defaultProps = {};
