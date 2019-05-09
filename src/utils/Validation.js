@@ -1,6 +1,5 @@
-export const isValidMobileNumber = str => {
-  const mobileNumber = /^[0-9]*$/;
-  if (!str || str.trim().length !== 10 || !mobileNumber.test(str)) {
+export const isValidPassword = str => {
+  if (str.trim().length < 6) {
     return false;
   } else {
     return true;
@@ -8,9 +7,8 @@ export const isValidMobileNumber = str => {
 };
 
 export const isValidEmail = userEmail => {
-  const email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (email.test(userEmail)) {
-    console.log("failed");
     return true;
   } else {
     return false;
