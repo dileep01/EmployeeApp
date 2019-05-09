@@ -10,6 +10,7 @@ export function getEmployeeListRequest() {
   };
 }
 export function getEmployeeListSuccess(employeeList) {
+  console.log("calledddd");
   return {
     type: GET_EMPLOYEELIST_SUCCESS,
     status: SUCCESS,
@@ -21,18 +22,5 @@ export function getEmployeeListFailure(error) {
     type: GET_EMPLOYEELIST_FAILURE,
     status: ERROR,
     error
-  };
-}
-
-export function getEmployeeList() {
-  return async (dispatch, getState, api) => {
-    dispatch(getEmployeeListRequest());
-    try {
-      //const result = await api.get(`sports/top.json?limit=${limit}`);
-      //const resultJson = await result.json();
-      dispatch(getEmployeeListSuccess(resultJson.data));
-    } catch (e) {
-      dispatch(getEmployeeListFailure(e.message));
-    }
   };
 }
